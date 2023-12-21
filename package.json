@@ -1,0 +1,38 @@
+{
+  "name": "fast-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/main.ts",
+    "tidy": "pnpm dlx @biomejs/biome check --apply src",
+    "build": "tsup src --treeshake --minify",
+    "start": "node dist/main.js",
+    "migration:gen": "drizzle-kit generate:sqlite",
+    "migration:apply": "drizzle-kit push:sqlite"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "1.4.1",
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.10.5",
+    "drizzle-kit": "^0.20.7",
+    "tsup": "^8.0.1",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^5.8.0",
+    "@fastify/cors": "^8.5.0",
+    "argon2": "^0.31.2",
+    "better-sqlite3": "^9.2.2",
+    "close-with-grace": "^1.2.0",
+    "dayjs": "^1.11.10",
+    "drizzle-orm": "^0.29.1",
+    "fastify": "^4.25.1",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
