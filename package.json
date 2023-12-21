@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx watch src/main.ts",
     "tidy": "pnpm dlx @biomejs/biome check --apply src",
-    "build": "tsup src --treeshake --minify",
+    "build": "tsup src --format cjs --legacy-output --clean --treeshake --minify",
     "start": "node dist/main.js",
     "migration:gen": "drizzle-kit generate:sqlite",
     "migration:apply": "drizzle-kit push:sqlite"
