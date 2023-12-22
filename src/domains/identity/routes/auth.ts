@@ -94,7 +94,7 @@ export default async function (app: FastifyInstance): Promise<void> {
     },
   });
 
-  app.patch("/renew-session", {
+  app.put("/renew-session", {
     schema: {
       body: {
         type: "object",
@@ -104,7 +104,6 @@ export default async function (app: FastifyInstance): Promise<void> {
         required: ["sessionId"],
       },
     },
-    preHandler: (req, _, done) => authGuard(app.verifyJwt, req, done),
     handler: async (request: FastifyRequest<{ Body: { sessionId: number } }>, reply) => {
       const sessionId = request.body.sessionId;
 

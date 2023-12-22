@@ -15,13 +15,30 @@ export const sessions = sqliteTable("sessions", {
     .references(() => users.id),
 });
 
+export const todos = sqliteTable("todos", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
+  title: text("title").unique().notNull(),
+  content: text("content").unique().notNull(),
+  userId: integer("user_id")
+    .notNull()
+    .references(() => users.id),
+});
+
 export const userRelations = relations(users, ({ many }) => ({
   sessions: many(sessions),
+  todos: many(todos),
 }));
 
 export const sessionRelations = relations(sessions, ({ one }) => ({
   user: one(users, {
     fields: [sessions.userId],
+    references: [users.id],
+  }),
+}));
+
+export const todoRelations = relations(todos, ({ one }) => ({
+  user: one(users, {
+    fields: [todos.userId],
     references: [users.id],
   }),
 }));
